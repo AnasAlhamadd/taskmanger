@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "831805889319",
+    "project_id": "testing-dce90",
+    "storage_bucket": "testing-dce90.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:831805889319:android:693cddfcdc47b3cf382702",
+        "android_client_info": {
+          "package_name": "com.example.untitledtaskmanger"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxUo0hBq4I_NmmLnv859mcfmxZ0Bfzn4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
