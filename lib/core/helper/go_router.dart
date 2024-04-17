@@ -11,7 +11,7 @@ class GoRouterPages {
     GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return const SplashView();
+        return const AddTaskView();
         // return const SplashView();
       },
     ),
