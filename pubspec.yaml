@@ -31,6 +31,7 @@ dependencies:
   awesome_dialog: ^3.2.0
   bloc: ^8.1.4
   cupertino_icons: ^1.0.6
+  date_picker_timeline: ^1.2.6
   firebase_auth: ^4.19.1
   firebase_core: ^2.29.0
   flutter:

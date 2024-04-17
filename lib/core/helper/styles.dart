@@ -17,4 +17,6 @@ class Styles {
       fontFamily: 'Platypi',
       fontWeight: FontWeight.bold,
       color: Colors.white.withOpacity(.5));
+  TextStyle textStyle18 = const TextStyle(
+      fontSize: 18, fontFamily: 'Platypi', fontWeight: FontWeight.bold);
 }
