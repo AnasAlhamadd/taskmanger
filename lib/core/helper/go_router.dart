@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:untitledtaskmanger/Feauthres/register/presintaion/views/register_page.dart';
 import 'package:untitledtaskmanger/Feauthres/splah_screen/presintaion/views/splash_view.dart';
 import 'package:untitledtaskmanger/Feauthres/splah_screen/presintaion/views/widgets/onBoarding/on_Boarding_view.dart';
+import 'package:untitledtaskmanger/Feauthres/add_task_screen/prisintaion/views/add_task_view.dart';
 import 'package:untitledtaskmanger/Feauthres/task_screen/perisintaion/views/widgets/task_app_viewbody.dart';
 
 class GoRouterPages {
@@ -30,6 +31,12 @@ class GoRouterPages {
       path: '/taskhome',
       builder: (BuildContext context, GoRouterState state) {
         return const TaskAppBodyView();
+      },
+    ),
+    GoRoute(
+      path: '/addtask',
+      builder: (BuildContext context, GoRouterState state) {
+        return const AddTaskView();
       },
     ),
   ]);

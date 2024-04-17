@@ -1,7 +1,7 @@
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:untitledtaskmanger/core/helper/constant.dart';
 import 'package:untitledtaskmanger/core/helper/styles.dart';
 import 'package:intl/intl.dart';
@@ -15,7 +15,9 @@ class TaskAppBodyView extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: kButtonColor,
         splashColor: Colors.grey[400],
-        onPressed: () {},
+        onPressed: () {
+          context.go('/addtask');
+        },
         child: const Icon(Icons.add),
       ),
       body: Padding(
