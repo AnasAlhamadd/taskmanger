@@ -1,7 +1,9 @@
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:untitledtaskmanger/Feauthres/task_screen/perisintaion/views/widgets/task_componets.dart';
+import 'package:untitledtaskmanger/core/helper/butoon_login_signup.dart';
 import 'package:untitledtaskmanger/core/helper/constant.dart';
 import 'package:untitledtaskmanger/core/helper/styles.dart';
 import 'package:intl/intl.dart';
@@ -74,7 +76,40 @@ class TaskAppBodyView extends StatelessWidget {
                 const SizedBox(
                   height: 25,
                 ),
-                const TaskComponets(),
+                GestureDetector(
+                    onTap: () {
+                      showModalBottomSheet(
+                        isDismissible: true,
+                        context: context,
+                        builder: (context) => Container(
+                          height: 250,
+                          color: const Color(0xff424242),
+                          width: double.infinity,
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 24.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                CustomButton(
+                                    textButton: 'Task Completed',
+                                    onPressed: () {}),
+                                CustomButton(
+                                    color: kButtonColorSecound,
+                                    textButton: 'Delete Task',
+                                    onPressed: () {}),
+                                CustomButton(
+                                  textButton: 'Cancel',
+                                  onPressed: () {},
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    child: const TaskComponets()),
               ],
             ),
           ),

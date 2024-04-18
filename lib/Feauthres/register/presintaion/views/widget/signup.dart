@@ -119,7 +119,7 @@ class _CustomAllfieldsSignUpState extends State<CustomAllfieldsSignUp> {
                       return const CircularProgressIndicator();
                     }
 
-                    return CustomButtonLoginWithSignUp(
+                    return CustomButton(
                       textButton: 'Sign Up',
                       onPressed: () async {
                         if (formstate!.currentState!.validate()) {

@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:untitledtaskmanger/core/helper/constant.dart';
 
-class CustomButtonLoginWithSignUp extends StatelessWidget {
-  const CustomButtonLoginWithSignUp(
-      {super.key, required this.textButton, required this.onPressed});
+class CustomButton extends StatelessWidget {
+  const CustomButton(
+      {super.key,
+      required this.textButton,
+      required this.onPressed,
+      this.color});
   final String textButton;
   final void Function()? onPressed;
+  final Color? color;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 12.0),
       child: MaterialButton(
         splashColor: Colors.grey[500],
-        color: kButtonColor,
+        color: color ?? kButtonColor,
         height: 50,
         onPressed: onPressed,
         child: Container(
