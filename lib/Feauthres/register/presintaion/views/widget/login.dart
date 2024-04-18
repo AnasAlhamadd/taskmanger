@@ -3,12 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:untitledtaskmanger/Feauthres/register/presintaion/views/widget/custom_textform_field.dart';
-import 'package:untitledtaskmanger/core/helper/butoon_login_signup.dart';
+import 'package:untitledtaskmanger/core/widgets/butoon_login_signup.dart';
 import 'package:untitledtaskmanger/core/helper/cache.dart';
 import 'package:untitledtaskmanger/core/helper/styles.dart';
 import 'package:untitledtaskmanger/cubit/signin_cubit.dart';
 import 'package:untitledtaskmanger/cubit/signin_state.dart';
-import 'package:untitledtaskmanger/core/helper/show_snak_bar.dart';
+import 'package:untitledtaskmanger/core/widgets/show_snak_bar.dart';
 import 'package:untitledtaskmanger/services/services_layer.dart';
 
 class CustomAllfieldsLogin extends StatefulWidget {

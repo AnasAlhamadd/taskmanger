@@ -5,9 +5,9 @@ import 'package:go_router/go_router.dart';
 import 'package:untitledtaskmanger/Feauthres/register/presintaion/views/widget/custom_divider.dart';
 import 'package:untitledtaskmanger/Feauthres/register/presintaion/views/widget/custom_social_media.dart';
 import 'package:untitledtaskmanger/Feauthres/register/presintaion/views/widget/custom_textform_field.dart';
-import 'package:untitledtaskmanger/core/helper/butoon_login_signup.dart';
+import 'package:untitledtaskmanger/core/widgets/butoon_login_signup.dart';
 import 'package:untitledtaskmanger/cubit/signup_cubit.dart';
-import 'package:untitledtaskmanger/core/helper/show_snak_bar.dart';
+import 'package:untitledtaskmanger/core/widgets/show_snak_bar.dart';
 
 class CustomAllfieldsSignUp extends StatefulWidget {
   const CustomAllfieldsSignUp({

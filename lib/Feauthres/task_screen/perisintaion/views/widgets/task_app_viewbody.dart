@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:untitledtaskmanger/Feauthres/task_screen/perisintaion/views/widgets/task_componets.dart';
-import 'package:untitledtaskmanger/core/helper/butoon_login_signup.dart';
+import 'package:untitledtaskmanger/core/widgets/butoon_login_signup.dart';
 import 'package:untitledtaskmanger/core/helper/constant.dart';
 import 'package:untitledtaskmanger/core/helper/styles.dart';
 import 'package:intl/intl.dart';

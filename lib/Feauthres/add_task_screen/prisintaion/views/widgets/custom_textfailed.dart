@@ -2,20 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:untitledtaskmanger/core/helper/styles.dart';
 
 class CustomTextFormInAddTask extends StatelessWidget {
-  const CustomTextFormInAddTask(
-      {super.key,
-      required this.title,
-      required this.onChanged,
-      this.hintText,
-      this.suffixIco,
-      this.onTap,
-      required this.controller});
+  const CustomTextFormInAddTask({
+    super.key,
+    required this.title,
+    this.onChanged,
+    this.readOnly = false,
+    this.hintText,
+    this.suffixIco,
+    this.onTap,
+    this.controller,
+  });
   final String title;
   final String? hintText;
   final TextEditingController? controller;
   final Widget? suffixIco;
   final void Function(String)? onChanged;
   final void Function()? onTap;
+  final bool readOnly;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,6 +35,7 @@ class CustomTextFormInAddTask extends StatelessWidget {
               child: SizedBox(
                 height: 50,
                 child: TextFormField(
+                  readOnly: readOnly,
                   controller: controller,
                   onTap: onTap,
                   onChanged: onChanged,
@@ -39,16 +43,13 @@ class CustomTextFormInAddTask extends StatelessWidget {
                     if (input!.isEmpty) return 'This field is empty';
                   },
                   decoration: InputDecoration(
-                    suffixIcon: suffixIco,
-                    hintText: hintText,
-                    fillColor: Colors.grey.withOpacity(.1),
-                    filled: true,
-                    border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5.0),
-                      ),
-                    ),
-                  ),
+                      suffixIcon: suffixIco,
+                      hintText: hintText,
+                      fillColor: Colors.grey.withOpacity(.1),
+                      filled: true,
+                      border: outlineInputBorder(),
+                      focusedBorder: outlineInputBorder(),
+                      errorBorder: outlineInputBorder()),
                 ),
               )),
         ],
@@ -56,3 +57,9 @@ class CustomTextFormInAddTask extends StatelessWidget {
     );
   }
 }
+
+OutlineInputBorder outlineInputBorder() => const OutlineInputBorder(
+      borderRadius: BorderRadius.all(
+        Radius.circular(5.0),
+      ),
+    );
