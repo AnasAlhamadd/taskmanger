@@ -9,6 +9,7 @@ import 'package:untitledtaskmanger/cubit/signup_cubit.dart';
 import 'package:untitledtaskmanger/firebase_options.dart';
 import 'package:untitledtaskmanger/services/services_layer.dart';
 import 'package:untitledtaskmanger/simple_bloc_observer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +30,8 @@ class TaskMangerApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
+    return ScreenUtilInit(
+      builder: (context, child) => MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => SigninCubit()),
           BlocProvider(create: (context) => SignUpCubit()),
@@ -40,6 +42,8 @@ class TaskMangerApp extends StatelessWidget {
           theme: ThemeData.dark().copyWith(
             scaffoldBackgroundColor: kprimaryColor,
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
