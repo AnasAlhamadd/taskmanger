@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:untitledtaskmanger/Feauthres/register/presintaion/views/widget/custom_textform_field.dart';
@@ -65,8 +66,8 @@ class _CustomAllfieldsLoginState extends State<CustomAllfieldsLogin> {
             ),
             child: Column(
               children: [
-                const SizedBox(
-                  height: 40,
+                SizedBox(
+                  height: 40.h,
                 ),
                 CustomTextField(
                     validator: (val) {
@@ -97,8 +98,8 @@ class _CustomAllfieldsLoginState extends State<CustomAllfieldsLogin> {
                       Icons.remove_red_eye_outlined,
                       size: 28,
                     )),
-                const SizedBox(
-                  height: 20,
+                SizedBox(
+                  height: 20.h,
                 ),
                 Row(
                   children: [

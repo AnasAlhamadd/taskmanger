@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -19,12 +20,11 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 70,
+      height: 70.h,
       margin: const EdgeInsets.symmetric(
         vertical: 12.0,
       ),
       child: TextFormField(
-        autofocus: true,
         validator: validator,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         controller: textEditingController,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:untitledtaskmanger/Feauthres/splah_screen/data/static/list_onboarding.dart';
 
@@ -14,8 +15,8 @@ class CustomImageAndIndicator extends StatelessWidget {
         padding: const EdgeInsets.only(top: 34),
         child: SvgPicture.asset(imageSrc),
       ),
-      const SizedBox(
-        height: 15.0,
+      SizedBox(
+        height: 15.0.h,
       ),
       Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         ...List.generate(

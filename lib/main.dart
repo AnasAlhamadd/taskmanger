@@ -31,10 +31,7 @@ class TaskMangerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-<<<<<<< HEAD
       designSize: const Size(375, 812),
-=======
->>>>>>> 02ad9f3a7c342c8651f413bf7be069f271cb01d1
       builder: (context, child) => MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => SigninCubit()),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitledtaskmanger/Feauthres/register/presintaion/views/widget/custom_multi_login_signup.dart';
 import 'package:untitledtaskmanger/core/helper/styles.dart';
 
@@ -12,8 +13,8 @@ class RegisterPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const SizedBox(
-            height: 100,
+          SizedBox(
+            height: 100.h,
           ),
           Center(
             child: Text(

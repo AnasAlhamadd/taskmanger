@@ -10,13 +10,13 @@ List<OnBoardingModel> onBoardingList = [
   OnBoardingModel(
     title: "Create daily routine",
     body:
-        "In Uptodo  you can create your personalized  \n  \t          routine to stay productive",
+        "   \t  In Uptodo  you can create your \n personalized  routine to stay productive",
     image: 'assets/images/2.svg',
   ),
   OnBoardingModel(
     title: "Organaize your tasks",
     body:
-        "You can organize your daily tasks by adding  \n  \t    your tasks into Separate Categories",
+        "You can organize your daily tasks by \n adding your tasks into  Separate  \n \t         \t \t     Categories",
     image: 'assets/images/3.svg',
   ),
 ];

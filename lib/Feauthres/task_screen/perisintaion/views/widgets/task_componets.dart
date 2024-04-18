@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitledtaskmanger/core/helper/styles.dart';
 
 class TaskComponets extends StatelessWidget {
@@ -33,8 +34,8 @@ class TaskComponets extends StatelessWidget {
                       Icons.alarm,
                       size: 30,
                     ),
-                    const SizedBox(
-                      width: 8.0,
+                    SizedBox(
+                      width: 8.0.w,
                     ),
                     Text(
                       '09:33 PM - 09:48 PM',

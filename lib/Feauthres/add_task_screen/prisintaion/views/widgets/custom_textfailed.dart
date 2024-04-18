@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitledtaskmanger/core/helper/styles.dart';
 
 class CustomTextFormInAddTask extends StatelessWidget {
@@ -22,7 +23,7 @@ class CustomTextFormInAddTask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 18.0),
+      padding: EdgeInsets.only(top: 18.0.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -31,9 +32,9 @@ class CustomTextFormInAddTask extends StatelessWidget {
             style: Styles().textstyle22.copyWith(color: Colors.white),
           ),
           Padding(
-              padding: const EdgeInsets.only(top: 24.0),
+              padding: EdgeInsets.only(top: 24.0.h),
               child: SizedBox(
-                height: 50,
+                height: 60.h,
                 child: TextFormField(
                   readOnly: readOnly,
                   controller: controller,

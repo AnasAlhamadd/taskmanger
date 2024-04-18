@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:untitledtaskmanger/Feauthres/add_task_screen/prisintaion/views/widgets/custom_appbar.dart';
 import 'package:untitledtaskmanger/Feauthres/add_task_screen/prisintaion/views/widgets/custom_textfailed.dart';
@@ -30,8 +31,8 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
           child: ListView(
             children: [
               const CustomAppBarInAddTask(),
-              const SizedBox(
-                height: 48.0,
+              SizedBox(
+                height: 48.0.h,
               ),
               // !Title
               CustomTextFormInAddTask(
@@ -94,8 +95,8 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
                       suffixIco: const Icon(Icons.timer_sharp),
                     ),
                   ),
-                  const SizedBox(
-                    width: 27,
+                  SizedBox(
+                    width: 27.w,
                   ),
                   //!end time
                   Expanded(
@@ -121,21 +122,21 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
               ),
 
               Padding(
-                padding: const EdgeInsets.only(top: 24.0),
+                padding: EdgeInsets.only(top: 24.0.h),
                 child: Text(
                   'Color',
                   style: Styles().textstyle22.copyWith(color: Colors.white),
                 ),
               ),
-              const SizedBox(
-                height: 8.0,
+              SizedBox(
+                height: 8.0.h,
               ),
               Row(
                 children: [
                   ...List.generate(
                     listColorsOfElipsic.length,
                     (index) => Padding(
-                      padding: const EdgeInsets.only(left: 12),
+                      padding: EdgeInsets.only(left: 12.w),
                       child: GestureDetector(
                         onTap: () {
                           setState(() {

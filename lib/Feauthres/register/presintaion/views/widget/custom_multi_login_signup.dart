@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitledtaskmanger/Feauthres/register/presintaion/views/widget/login.dart';
 import 'package:untitledtaskmanger/Feauthres/register/presintaion/views/widget/signup.dart';
 import 'package:untitledtaskmanger/core/helper/styles.dart';
@@ -17,8 +18,8 @@ class _CustomMultiLoaginOrSignupState extends State<CustomMultiLoaginOrSignup> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(
-          height: 40,
+        SizedBox(
+          height: 40.h,
         ),
         Container(
           height: 60,

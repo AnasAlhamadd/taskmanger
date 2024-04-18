@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitledtaskmanger/Feauthres/add_task_screen/prisintaion/views/widgets/custom_textfailed.dart';
 
 Row showRangeDate() {
@@ -13,8 +14,8 @@ Row showRangeDate() {
           suffixIco: const Icon(Icons.timer_sharp),
         ),
       ),
-      const SizedBox(
-        width: 27,
+      SizedBox(
+        width: 27.w,
       ),
       Expanded(
           child: CustomTextFormInAddTask(

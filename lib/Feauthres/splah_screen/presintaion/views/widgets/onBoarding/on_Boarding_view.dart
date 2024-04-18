@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:untitledtaskmanger/Feauthres/splah_screen/data/static/list_onboarding.dart';
 import 'package:untitledtaskmanger/Feauthres/splah_screen/presintaion/views/widgets/onBoarding/custom_image_dotindicato.dart';
@@ -63,8 +64,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const SizedBox(
-                      height: 20,
+                    SizedBox(
+                      height: 20.h,
                     ),
                     GestureDetector(
                       onTap: () {},

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitledtaskmanger/core/helper/constant.dart';
 
 class CustomButtonOnBoarding extends StatelessWidget {
@@ -19,7 +20,7 @@ class CustomButtonOnBoarding extends StatelessWidget {
           color: kButtonColor,
           minWidth: 90,
           splashColor: Colors.deepPurpleAccent,
-          height: 45,
+          height: 45.h,
           onPressed: onPressed,
           child: Text(textButton),
         ),

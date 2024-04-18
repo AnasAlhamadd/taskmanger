@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:untitledtaskmanger/core/helper/styles.dart';
 
@@ -13,13 +14,13 @@ class CustomAppBarInAddTask extends StatelessWidget {
           onPressed: () {
             GoRouter.of(context).go('/taskhome');
           },
-          icon: const Icon(
+          icon: Icon(
             Icons.arrow_back_ios,
-            size: 24,
+            size: 24.sp,
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 20.0),
+          padding: EdgeInsets.only(left: 20.0.w),
           child: Text(
             'Add Task',
             style: Styles().textstyle32.copyWith(fontFamily: 'Trajan'),
