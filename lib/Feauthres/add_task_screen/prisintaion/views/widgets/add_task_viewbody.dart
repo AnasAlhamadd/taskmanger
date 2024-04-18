@@ -29,16 +29,19 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
               height: 48.0,
             ),
             CustomTextFormInAddTask(
+                controller: TextEditingController(),
                 onChanged: (input) {
                   print(input);
                 },
                 title: 'Title',
                 hintText: 'Enter title here'),
             CustomTextFormInAddTask(
+                controller: TextEditingController(),
                 onChanged: (input) {},
                 title: 'Note',
                 hintText: 'Enter note here'),
             CustomTextFormInAddTask(
+              controller: TextEditingController(),
               onChanged: (input) {},
               onTap: () {},
               title: 'Date',

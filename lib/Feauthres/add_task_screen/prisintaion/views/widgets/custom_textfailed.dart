@@ -8,9 +8,11 @@ class CustomTextFormInAddTask extends StatelessWidget {
       required this.onChanged,
       this.hintText,
       this.suffixIco,
-      this.onTap});
+      this.onTap,
+      required this.controller});
   final String title;
   final String? hintText;
+  final TextEditingController? controller;
   final Widget? suffixIco;
   final void Function(String)? onChanged;
   final void Function()? onTap;
@@ -30,6 +32,7 @@ class CustomTextFormInAddTask extends StatelessWidget {
               child: SizedBox(
                 height: 50,
                 child: TextFormField(
+                  controller: controller,
                   onTap: onTap,
                   onChanged: onChanged,
                   validator: (input) {

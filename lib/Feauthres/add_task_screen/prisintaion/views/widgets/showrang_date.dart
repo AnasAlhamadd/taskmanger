@@ -6,6 +6,7 @@ Row showRangeDate() {
     children: [
       Expanded(
         child: CustomTextFormInAddTask(
+          controller: TextEditingController(),
           onChanged: (input) {},
           onTap: () {},
           title: 'Satrt Time',
@@ -17,6 +18,7 @@ Row showRangeDate() {
       ),
       Expanded(
           child: CustomTextFormInAddTask(
+        controller: TextEditingController(),
         onTap: () {},
         onChanged: (input) {},
         title: 'End Time',
