@@ -1,5 +1,8 @@
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:untitledtaskmanger/Feature/task_screen/data/model/task_model.dart';
 import 'package:untitledtaskmanger/Feature/task_screen/perisintaion/views/widgets/task_componets.dart';
 import 'package:untitledtaskmanger/core/widgets/custom_button.dart';
 import 'package:untitledtaskmanger/core/helper/constant.dart';
@@ -11,7 +14,6 @@ class TaskAppBodyViewbody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isTask = false;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: CustomScrollView(slivers: [
@@ -40,8 +42,8 @@ class TaskAppBodyViewbody extends StatelessWidget {
         SliverFillRemaining(
           child: Column(
             children: [
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: 20.h,
               ),
               Container(
                 padding: const EdgeInsets.only(top: 6.0),
@@ -62,42 +64,59 @@ class TaskAppBodyViewbody extends StatelessWidget {
                   },
                 ),
               ),
-              const SizedBox(
-                height: 25,
+              SizedBox(
+                height: 20.h,
               ),
-              GestureDetector(
-                  onTap: () {
-                    showModalBottomSheet(
-                      isDismissible: true,
-                      context: context,
-                      builder: (context) => Container(
-                        height: 250,
-                        color: const Color(0xff424242),
-                        width: double.infinity,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CustomButton(
-                                  textButton: 'Task Completed',
-                                  onPressed: () {}),
-                              CustomButton(
-                                  color: kButtonColorSecound,
-                                  textButton: 'Delete Task',
-                                  onPressed: () {}),
-                              CustomButton(
-                                textButton: 'Cancel',
-                                onPressed: () {},
-                              )
-                            ],
+              TaskModel.listTasks.isEmpty
+                  ? SvgPicture.asset('assets/images/homescreen.svg')
+                  : Expanded(
+                      child: ListView.separated(
+                        padding: EdgeInsets.zero,
+                        itemCount: TaskModel.listTasks.length,
+                        itemBuilder: (context, index) => GestureDetector(
+                          onTap: () {
+                            showModalBottomSheet(
+                              isDismissible: true,
+                              context: context,
+                              builder: (context) => Container(
+                                height: 250,
+                                color: const Color(0xff424242),
+                                width: double.infinity,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 24.0),
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      CustomButton(
+                                          textButton: 'Task Completed',
+                                          onPressed: () {}),
+                                      CustomButton(
+                                          color: kButtonColorSecound,
+                                          textButton: 'Delete Task',
+                                          onPressed: () {}),
+                                      CustomButton(
+                                        textButton: 'Cancel',
+                                        onPressed: () {},
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                          child: TaskComponets(
+                            taskModel: TaskModel.listTasks[index],
                           ),
                         ),
+                        separatorBuilder: (context, index) => SizedBox(
+                          height: 10.h,
+                        ),
                       ),
-                    );
-                  },
-                  child: const TaskComponets()),
+                    )
             ],
           ),
         ),
