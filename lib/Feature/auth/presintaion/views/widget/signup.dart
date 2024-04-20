@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:untitledtaskmanger/Feature/auth/cubit/auth_cubit.dart';
+import 'package:untitledtaskmanger/Feature/auth/cubit/auth_state.dart';
 import 'package:untitledtaskmanger/Feature/auth/presintaion/views/widget/custom_textform_field.dart';
 import 'package:untitledtaskmanger/Feature/auth/presintaion/views/widget/custom_divider.dart';
 import 'package:untitledtaskmanger/Feature/auth/presintaion/views/widget/custom_social_media.dart';
 import 'package:untitledtaskmanger/core/widgets/custom_button.dart';
-import 'package:untitledtaskmanger/cubit/signup_cubit.dart';
 import 'package:untitledtaskmanger/core/widgets/show_snak_bar.dart';
 
 class CustomAllfieldsSignUp extends StatefulWidget {
@@ -43,7 +44,7 @@ class _CustomAllfieldsSignUpState extends State<CustomAllfieldsSignUp> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignUpCubit, SignUpState>(
+    return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
         if (state is SignUpSuccess) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -113,7 +114,7 @@ class _CustomAllfieldsSignUpState extends State<CustomAllfieldsSignUp> {
                     label: const Text(
                       'Confirm Password',
                     )),
-                BlocBuilder<SignUpCubit, SignUpState>(
+                BlocBuilder<AuthCubit, AuthState>(
                   builder: (context, state) {
                     if (state is SignUpLoading) {
                       return const CircularProgressIndicator();
@@ -123,7 +124,7 @@ class _CustomAllfieldsSignUpState extends State<CustomAllfieldsSignUp> {
                       textButton: 'Sign Up',
                       onPressed: () async {
                         if (formstate!.currentState!.validate()) {
-                          BlocProvider.of<SignUpCubit>(context)
+                          BlocProvider.of<AuthCubit>(context)
                               .signUp(email: email!, password: password!);
                         }
                       },

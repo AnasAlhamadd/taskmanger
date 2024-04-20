@@ -4,9 +4,9 @@ import 'package:untitledtaskmanger/Feature/splah_screen/data/static/list_onboard
 import 'package:untitledtaskmanger/Feature/splah_screen/presintaion/views/widgets/custom_image_dotindicato.dart';
 import 'package:untitledtaskmanger/Feature/splah_screen/presintaion/views/widgets/custom-button.dart';
 import 'package:untitledtaskmanger/Feature/splah_screen/presintaion/views/widgets/custom_title_body.dart';
-import 'package:untitledtaskmanger/core/helper/cache.dart';
+import 'package:untitledtaskmanger/core/database/cache.dart';
 import 'package:untitledtaskmanger/core/helper/styles.dart';
-import 'package:untitledtaskmanger/services/services_layer.dart';
+import 'package:untitledtaskmanger/core/services/services_layer.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
   const OnBoardingViewBody({super.key});

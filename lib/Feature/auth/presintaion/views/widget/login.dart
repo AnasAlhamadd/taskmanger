@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:untitledtaskmanger/Feature/auth/cubit/auth_cubit.dart';
+import 'package:untitledtaskmanger/Feature/auth/cubit/auth_state.dart';
 import 'package:untitledtaskmanger/Feature/auth/presintaion/views/widget/custom_textform_field.dart';
+import 'package:untitledtaskmanger/core/database/cache.dart';
+import 'package:untitledtaskmanger/core/services/services_layer.dart';
 import 'package:untitledtaskmanger/core/widgets/custom_button.dart';
-import 'package:untitledtaskmanger/core/helper/cache.dart';
 import 'package:untitledtaskmanger/core/helper/styles.dart';
-import 'package:untitledtaskmanger/cubit/signin_cubit.dart';
-import 'package:untitledtaskmanger/cubit/signin_state.dart';
+// import 'package:untitledtaskmanger/cubit/signin_cubit.dart';
+// import 'package:untitledtaskmanger/cubit/signin_state.dart';
 import 'package:untitledtaskmanger/core/widgets/show_snak_bar.dart';
-import 'package:untitledtaskmanger/services/services_layer.dart';
 
 class CustomAllfieldsLogin extends StatefulWidget {
   const CustomAllfieldsLogin({
@@ -46,7 +48,7 @@ class _CustomAllfieldsLoginState extends State<CustomAllfieldsLogin> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SigninCubit, SignInState>(
+    return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
         if (state is SignInSuccess) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -120,7 +122,7 @@ class _CustomAllfieldsLoginState extends State<CustomAllfieldsLogin> {
                     )
                   ],
                 ),
-                BlocBuilder<SigninCubit, SignInState>(
+                BlocBuilder<AuthCubit, AuthState>(
                   builder: (context, state) {
                     if (state is SignInLoading) {
                       return const CircularProgressIndicator();
@@ -130,7 +132,7 @@ class _CustomAllfieldsLoginState extends State<CustomAllfieldsLogin> {
                       textButton: 'Sign In',
                       onPressed: () async {
                         if (formstate.currentState!.validate()) {
-                          BlocProvider.of<SigninCubit>(context)
+                          BlocProvider.of<AuthCubit>(context)
                               .signIn(email: email!, password: password!);
                         }
                       },

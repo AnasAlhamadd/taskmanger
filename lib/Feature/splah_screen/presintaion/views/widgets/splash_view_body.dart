@@ -1,10 +1,9 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:untitledtaskmanger/core/helper/cache.dart';
+import 'package:untitledtaskmanger/core/database/cache.dart';
 import 'package:untitledtaskmanger/core/helper/constant.dart';
-import 'package:untitledtaskmanger/services/services_layer.dart';
+import 'package:untitledtaskmanger/core/services/services_layer.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
