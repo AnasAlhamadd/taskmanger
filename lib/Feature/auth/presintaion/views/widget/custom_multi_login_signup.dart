@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:untitledtaskmanger/Feature/register/presintaion/views/widget/login.dart';
-import 'package:untitledtaskmanger/Feature/register/presintaion/views/widget/signup.dart';
+import 'package:untitledtaskmanger/Feature/auth/presintaion/views/widget/login.dart';
+import 'package:untitledtaskmanger/Feature/auth/presintaion/views/widget/signup.dart';
 import 'package:untitledtaskmanger/core/helper/styles.dart';
 
 class CustomMultiLoaginOrSignup extends StatefulWidget {

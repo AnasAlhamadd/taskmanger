@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:untitledtaskmanger/Feature/register/presintaion/views/widget/custom_multi_login_signup.dart';
+import 'package:untitledtaskmanger/Feature/auth/presintaion/views/widget/custom_multi_login_signup.dart';
 import 'package:untitledtaskmanger/core/helper/styles.dart';
 
 class RegisterPageViewBody extends StatelessWidget {

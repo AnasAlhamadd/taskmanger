@@ -37,6 +37,9 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
               ),
               // !Title
               CustomTextFormInAddTask(
+                  validator: (input) {
+                    if (input!.isEmpty) return 'The field is empty';
+                  },
                   controller: TextEditingController(),
                   onChanged: (input) {},
                   title: 'Title',
@@ -44,6 +47,9 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
               // !Note
 
               CustomTextFormInAddTask(
+                  validator: (input) {
+                    if (input!.isEmpty) return 'The field is empty';
+                  },
                   controller: TextEditingController(),
                   onChanged: (input) {},
                   title: 'Note',
@@ -171,7 +177,7 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
                         color: Colors.white, fontWeight: FontWeight.bold),
                   )),
               const SizedBox(
-                height: 50,
+                height: 100,
               ),
             ],
           )),

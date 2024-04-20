@@ -12,6 +12,7 @@ class CustomTextFormInAddTask extends StatelessWidget {
     this.suffixIco,
     this.onTap,
     this.controller,
+    this.validator,
   });
   final String title;
   final String? hintText;
@@ -20,6 +21,7 @@ class CustomTextFormInAddTask extends StatelessWidget {
   final void Function(String)? onChanged;
   final void Function()? onTap;
   final bool readOnly;
+  final String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -36,13 +38,13 @@ class CustomTextFormInAddTask extends StatelessWidget {
               child: SizedBox(
                 height: 60.h,
                 child: TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   readOnly: readOnly,
                   controller: controller,
                   onTap: onTap,
                   onChanged: onChanged,
-                  validator: (input) {
-                    if (input!.isEmpty) return 'This field is empty';
-                  },
+                  
+                  validator: validator,
                   decoration: InputDecoration(
                       suffixIcon: suffixIco,
                       hintText: hintText,
