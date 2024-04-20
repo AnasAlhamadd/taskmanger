@@ -31,9 +31,7 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
           child: ListView(
             children: [
               const CustomAppBarInAddTask(),
-              SizedBox(
-                height: 48.0.h,
-              ),
+
               // !Title
               CustomTextFormInAddTask(
                   validator: (input) {
@@ -161,7 +159,7 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
                 ],
               ),
               const SizedBox(
-                height: 100,
+                height: 50,
               ),
               MaterialButton(
                   height: 50,
@@ -176,7 +174,7 @@ class _AddTaskViewBodyState extends State<AddTaskViewBody> {
                         color: Colors.white, fontWeight: FontWeight.bold),
                   )),
               const SizedBox(
-                height: 100,
+                height: 50,
               ),
             ],
           )),
