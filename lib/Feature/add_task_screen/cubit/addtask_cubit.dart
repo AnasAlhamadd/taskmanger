@@ -1,8 +1,4 @@
 import 'dart:math';
-<<<<<<< HEAD
-=======
-
->>>>>>> c2fcb2b57e13b9c3ab0ecbd914375498e3291d82
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -15,20 +11,15 @@ class AddtaskCubit extends Cubit<AddTaskState> {
 
   //varibale
   int curentIndex = 0;
-<<<<<<< HEAD
-=======
   bool val = false;
->>>>>>> c2fcb2b57e13b9c3ab0ecbd914375498e3291d82
+
   DateTime dateTime = DateTime.now();
   String startTimeDate = DateFormat('hh:mm a').format(DateTime.now());
   String endTimeDate = DateFormat('hh:mm a')
       .format(DateTime.now().add(const Duration(minutes: 45)));
-<<<<<<< HEAD
 //
   //get Date
-=======
 
->>>>>>> c2fcb2b57e13b9c3ab0ecbd914375498e3291d82
   void getDate(context) async {
     DateTime? pickedDate = await showDatePicker(
       context: context,
@@ -40,7 +31,6 @@ class AddtaskCubit extends Cubit<AddTaskState> {
       emit(GetDateSuccess());
     }
   }
-<<<<<<< HEAD
   //get Date StartDate and EndDate
 
   void startDate(context) async {
@@ -65,10 +55,17 @@ class AddtaskCubit extends Cubit<AddTaskState> {
   }
 
   //Check On Elipse
-  void setCheckOnElipse(int index) async {
+  setCheckOnElipse(int index) {
     curentIndex = index;
     emit(GetDateSuccess());
   }
-=======
->>>>>>> c2fcb2b57e13b9c3ab0ecbd914375498e3291d82
+
+  List<Color> listColorsOfElipsic = const [
+    Color(0xffFF4666),
+    Color(0xff66CC41),
+    Color(0xffb41CCA7),
+    Color(0xff4181CC),
+    Color(0xffCC8441),
+    Color(0xff9741CC),
+  ];
 }
