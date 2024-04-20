@@ -43,7 +43,6 @@ class CustomTextFormInAddTask extends StatelessWidget {
                   controller: controller,
                   onTap: onTap,
                   onChanged: onChanged,
-                  
                   validator: validator,
                   decoration: InputDecoration(
                       suffixIcon: suffixIco,
@@ -52,7 +51,7 @@ class CustomTextFormInAddTask extends StatelessWidget {
                       filled: true,
                       border: outlineInputBorder(),
                       focusedBorder: outlineInputBorder(),
-                      errorBorder: outlineInputBorder()),
+                      errorBorder: outlineInputBorder(Colors.red)),
                 ),
               )),
         ],
@@ -61,8 +60,9 @@ class CustomTextFormInAddTask extends StatelessWidget {
   }
 }
 
-OutlineInputBorder outlineInputBorder() => const OutlineInputBorder(
-      borderRadius: BorderRadius.all(
+OutlineInputBorder outlineInputBorder([Color? color]) => OutlineInputBorder(
+      borderSide: BorderSide(color: color ?? Colors.grey.withOpacity(.1)),
+      borderRadius: const BorderRadius.all(
         Radius.circular(5.0),
       ),
     );
