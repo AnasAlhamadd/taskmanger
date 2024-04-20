@@ -5,6 +5,7 @@ class TaskModel {
   final String startTime;
   final String endTime;
   final String notes;
+  final String date;
   final int color;
   final bool isCompleted;
 
@@ -14,35 +15,7 @@ class TaskModel {
       required this.startTime,
       required this.endTime,
       required this.notes,
+      required this.date,
       required this.color,
       required this.isCompleted});
-
-  static List<TaskModel> listTasks = [
-    TaskModel(
-      id: '1',
-      title: 'Task 1',
-      startTime: '09:33 PM',
-      endTime: '09:48 PM',
-      notes: 'Learn Dart',
-      color: 0,
-      isCompleted: true,
-    ),
-    TaskModel(
-      id: '2',
-      title: 'Task 1',
-      startTime: '09:33 PM',
-      endTime: '09:48 PM',
-      notes: 'Learn Dart',
-      color: 0,
-      isCompleted: true,
-    ),
-    // TaskModel(
-    //   title: 'Task 2',
-    //   startTime: '10:33 PM',
-    //   endTime: '10:48 PM',
-    //   notes: 'Learn Js',
-    //   color: 1,
-    //   isCompleted: false,
-    // ),
-  ];
 }
