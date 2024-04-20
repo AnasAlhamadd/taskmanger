@@ -123,7 +123,7 @@ class _CustomAllfieldsSignUpState extends State<CustomAllfieldsSignUp> {
                     return CustomButton(
                       textButton: 'Sign Up',
                       onPressed: () async {
-                        if (formstate!.currentState!.validate()) {
+                        if (formstate.currentState!.validate()) {
                           BlocProvider.of<AuthCubit>(context)
                               .signUp(email: email!, password: password!);
                         }

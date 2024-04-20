@@ -14,9 +14,8 @@ class AddTaskViewBody extends StatefulWidget {
   State<AddTaskViewBody> createState() => _AddTaskViewBodyState();
 }
 
-GlobalKey<FormState> formstate = GlobalKey<FormState>();
-
 class _AddTaskViewBodyState extends State<AddTaskViewBody> {
+  GlobalKey<FormState> formstate = GlobalKey<FormState>();
   int curentIndex = 0;
   bool val = false;
   DateTime dateTime = DateTime.now();
