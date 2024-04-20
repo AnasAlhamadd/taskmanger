@@ -62,14 +62,31 @@ class AddTaskViewBody extends StatelessWidget {
                   Row(
                     children: [
                       //!start time
+<<<<<<< HEAD
+=======
+
+>>>>>>> c2fcb2b57e13b9c3ab0ecbd914375498e3291d82
                       Expanded(
                         child: CustomTextFormInAddTask(
                           readOnly: true,
                           hintText: BlocProvider.of<AddtaskCubit>(context)
                               .startTimeDate,
                           onTap: () async {
+<<<<<<< HEAD
                             BlocProvider.of<AddtaskCubit>(context)
                                 .startDate(context);
+=======
+                            TimeOfDay? pickedstartTimeDate =
+                                await showTimePicker(
+                                    context: context,
+                                    initialTime:
+                                        TimeOfDay.fromDateTime(DateTime.now()));
+                            if (pickedstartTimeDate != null) {
+                              // setState(() {
+                              //   startTimeDate = pickedstartTimeDate.format(context);
+                              // });
+                            }
+>>>>>>> c2fcb2b57e13b9c3ab0ecbd914375498e3291d82
                           },
                           title: 'Satrt Time',
                           suffixIco: const Icon(Icons.timer_sharp),
@@ -84,8 +101,21 @@ class AddTaskViewBody extends StatelessWidget {
                         hintText:
                             BlocProvider.of<AddtaskCubit>(context).endTimeDate,
                         onTap: () async {
+<<<<<<< HEAD
                           BlocProvider.of<AddtaskCubit>(context)
                               .endDate(context);
+=======
+                          TimeOfDay? pickedendTimeDate = await showTimePicker(
+                            context: context,
+                            initialTime: TimeOfDay.fromDateTime(DateTime.now()
+                                .add(const Duration(minutes: 45))),
+                          );
+                          if (pickedendTimeDate != null) {
+                            // setState(() {
+                            //   endTimeDate = pickedendTimeDate.format(context);
+                            // });
+                          }
+>>>>>>> c2fcb2b57e13b9c3ab0ecbd914375498e3291d82
                         },
                         readOnly: true,
                         title: 'End Time',
@@ -112,8 +142,14 @@ class AddTaskViewBody extends StatelessWidget {
                           padding: EdgeInsets.only(left: 12.w),
                           child: GestureDetector(
                             onTap: () {
+<<<<<<< HEAD
                               BlocProvider.of<AddtaskCubit>(context)
                                   .setCheckOnElipse(index);
+=======
+                              // setState(() {
+                              //   curentIndex = index;
+                              // });
+>>>>>>> c2fcb2b57e13b9c3ab0ecbd914375498e3291d82
                             },
                             child: CircleAvatar(
                               backgroundColor: listColorsOfElipsic[index],
