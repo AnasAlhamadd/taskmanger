@@ -59,7 +59,6 @@ class AddtaskCubit extends Cubit<AddTaskState> {
     curentIndex = index;
     emit(GetDateSuccess());
   }
-<<<<<<< HEAD
 
   List<Color> listColorsOfElipsic = const [
     Color(0xffFF4666),
@@ -69,6 +68,4 @@ class AddtaskCubit extends Cubit<AddTaskState> {
     Color(0xffCC8441),
     Color(0xff9741CC),
   ];
-=======
->>>>>>> 15886a781e235633fc71f59899a23be6dff70f57
 }

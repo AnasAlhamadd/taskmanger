@@ -13,6 +13,7 @@ class AddTaskViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = BlocProvider.of<AddtaskCubit>(context);
     GlobalKey<FormState> formstate = GlobalKey<FormState>();
     return Form(
       key: formstate,
@@ -47,11 +48,10 @@ class AddTaskViewBody extends StatelessWidget {
                     readOnly: true,
                     controller: TextEditingController(),
                     title: 'Date',
-                    hintText: DateFormat.yMEd().format(
-                        BlocProvider.of<AddtaskCubit>(context).dateTime),
+                    hintText: DateFormat.yMEd().format(cubit.dateTime),
                     suffixIco: GestureDetector(
                       onTap: () async {
-                        BlocProvider.of<AddtaskCubit>(context).getDate(context);
+                        cubit.getDate(context);
                       },
                       child: const Icon(Icons.calendar_month_rounded),
                     ),
@@ -64,11 +64,9 @@ class AddTaskViewBody extends StatelessWidget {
                       Expanded(
                         child: CustomTextFormInAddTask(
                           readOnly: true,
-                          hintText: BlocProvider.of<AddtaskCubit>(context)
-                              .startTimeDate,
+                          hintText: cubit.startTimeDate,
                           onTap: () async {
-                            BlocProvider.of<AddtaskCubit>(context)
-                                .startDate(context);
+                            cubit.startDate(context);
                           },
                           title: 'Satrt Time',
                           suffixIco: const Icon(Icons.timer_sharp),
@@ -80,11 +78,9 @@ class AddTaskViewBody extends StatelessWidget {
                       //!end time
                       Expanded(
                           child: CustomTextFormInAddTask(
-                        hintText:
-                            BlocProvider.of<AddtaskCubit>(context).endTimeDate,
+                        hintText: cubit.endTimeDate,
                         onTap: () async {
-                          BlocProvider.of<AddtaskCubit>(context)
-                              .endDate(context);
+                          cubit.endDate(context);
                         },
                         readOnly: true,
                         title: 'End Time',
@@ -106,23 +102,16 @@ class AddTaskViewBody extends StatelessWidget {
                   Row(
                     children: [
                       ...List.generate(
-                        BlocProvider.of<AddtaskCubit>(context)
-                            .listColorsOfElipsic
-                            .length,
+                        cubit.listColorsOfElipsic.length,
                         (index) => Padding(
                           padding: EdgeInsets.only(left: 12.w),
                           child: GestureDetector(
                             onTap: () {
-                              BlocProvider.of<AddtaskCubit>(context)
-                                  .setCheckOnElipse(index);
+                              cubit.setCheckOnElipse(index);
                             },
                             child: CircleAvatar(
-                              backgroundColor:
-                                  BlocProvider.of<AddtaskCubit>(context)
-                                      .listColorsOfElipsic[index],
-                              child: BlocProvider.of<AddtaskCubit>(context)
-                                          .curentIndex ==
-                                      index
+                              backgroundColor: cubit.listColorsOfElipsic[index],
+                              child: cubit.curentIndex == index
                                   ? const Icon(Icons.check)
                                   : null,
                             ),
