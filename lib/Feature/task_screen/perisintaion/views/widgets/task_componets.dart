@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:untitledtaskmanger/Feature/task_screen/data/model/task_model.dart';
 import 'package:untitledtaskmanger/core/helper/styles.dart';
 
 class TaskComponets extends StatelessWidget {
-  const TaskComponets({super.key});
-
+  const TaskComponets({super.key, required this.taskModel});
+  final TaskModel taskModel;
   @override
   Widget build(BuildContext context) {
+    List<Color> listColorsOfElipsic = const [
+      Color(0xffFF4666),
+      Color(0xff66CC41),
+      Color(0xffb41CCA7),
+      Color(0xff4181CC),
+      Color(0xffCC8441),
+      Color(0xff9741CC),
+    ];
     return Container(
       height: 130,
       decoration: BoxDecoration(
-        color: Colors.red,
+        color: listColorsOfElipsic[taskModel.color],
         borderRadius: BorderRadius.circular(16),
       ),
       child: Padding(
@@ -24,7 +33,7 @@ class TaskComponets extends StatelessWidget {
               children: [
                 //text Task
                 Text(
-                  'Task 1',
+                  taskModel.title,
                   style: Styles().textstyle28,
                 ),
                 //Custom time and Icon
@@ -38,14 +47,14 @@ class TaskComponets extends StatelessWidget {
                       width: 8.0.w,
                     ),
                     Text(
-                      '09:33 PM - 09:48 PM',
+                      '${taskModel.startTime}- ${taskModel.endTime}',
                       style: Styles().textStyle18,
                     ),
                   ],
                 ),
                 //Text title
                 Text(
-                  'Learn Dart',
+                  taskModel.notes,
                   style: Styles().textstyle28,
                 )
               ],
@@ -58,12 +67,18 @@ class TaskComponets extends StatelessWidget {
               endIndent: 30,
             ),
             RotatedBox(
-              quarterTurns: 3,
-              child: Text(
-                'TODO',
-                style: Styles().textStyle18.copyWith(fontFamily: 'sans'),
-              ),
-            ),
+                quarterTurns: 3,
+                child: taskModel.isCompleted
+                    ? Text(
+                        'Completed',
+                        style:
+                            Styles().textStyle18.copyWith(fontFamily: 'sans'),
+                      )
+                    : Text(
+                        'TODO',
+                        style:
+                            Styles().textStyle18.copyWith(fontFamily: 'sans'),
+                      )),
           ],
         ),
       ),
