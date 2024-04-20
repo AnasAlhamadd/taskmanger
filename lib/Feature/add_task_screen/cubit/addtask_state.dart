@@ -1,6 +1,8 @@
 part of 'addtask_cubit.dart';
 
 @immutable
-sealed class AddtaskState {}
+sealed class AddTaskState {}
 
-final class AddtaskInitial extends AddtaskState {}
+final class GetDateInitial extends AddTaskState {}
+
+final class GetDateSuccess extends AddTaskState {}
