@@ -5,7 +5,6 @@ import 'package:untitledtaskmanger/Feature/auth/cubit/auth_cubit.dart';
 import 'package:untitledtaskmanger/core/database/cache.dart';
 import 'package:untitledtaskmanger/core/helper/constant.dart';
 import 'package:untitledtaskmanger/core/services/services_layer.dart';
-import 'package:untitledtaskmanger/cubit/signup_cubit.dart';
 import 'package:untitledtaskmanger/firebase_options.dart';
 import 'package:untitledtaskmanger/routing.dart';
 import 'package:untitledtaskmanger/simple_bloc_observer.dart';
@@ -35,7 +34,6 @@ class TaskMangerApp extends StatelessWidget {
       builder: (context, child) => MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => AuthCubit()),
-          BlocProvider(create: (context) => SignUpCubit()),
         ],
         child: MaterialApp(
           routes: routes,
