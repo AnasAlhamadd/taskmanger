@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -72,4 +74,36 @@ class TaskviewCubit extends Cubit<TaskviewState> {
     Color(0xff9741CC),
   ];
   List<TaskModel> listTasks = <TaskModel>[];
+
+  void insertDate() async {
+    emit(AddDateLoading());
+    try {
+      //to make scren wait 2 secounds
+      await Future.delayed(Duration(seconds: 2));
+      listTasks.add(
+        TaskModel(
+          id: '1',
+          title: title.text,
+          startTime: startTimeDate,
+          endTime: endTimeDate,
+          notes: notes.text,
+          date: DateFormat.yMEd().format(dateTime),
+          color: curentIndex,
+          isCompleted: false,
+        ),
+      );
+
+      emit(AddDateSuccess());
+      title.clear();
+      notes.clear();
+      dateTime = DateTime.now();
+      startTimeDate = DateFormat('hh:mm a').format(DateTime.now());
+      endTimeDate = DateFormat('hh:mm a')
+          .format(DateTime.now().add(const Duration(minutes: 45)));
+      curentIndex = 0;
+    } catch (e) {
+      emit(AddDateFaliure(
+          errMesage: 'There is A Problem with the ${e.toString()}'));
+    }
+  }
 }

@@ -7,6 +7,7 @@ import 'package:untitledtaskmanger/Feature/task/prisintaion/views/widgets/custom
 import 'package:untitledtaskmanger/Feature/task/cubit/task_cubit.dart';
 import 'package:untitledtaskmanger/core/helper/constant.dart';
 import 'package:untitledtaskmanger/core/helper/styles.dart';
+import 'package:untitledtaskmanger/core/widgets/show_snak_bar.dart';
 
 class AddTaskViewBody extends StatelessWidget {
   const AddTaskViewBody({super.key});
@@ -14,7 +15,15 @@ class AddTaskViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = BlocProvider.of<TaskviewCubit>(context);
-    return BlocBuilder<TaskviewCubit, TaskviewState>(
+    return BlocConsumer<TaskviewCubit, TaskviewState>(
+      listener: (context, state) {
+        // TODO: implement listener
+        if (state is AddDateSuccess) {
+          Navigator.pop(context);
+        } else if (state is AddDateFaliure) {
+          showsnackbar(context: context, title: state.errMesage);
+        }
+      },
       builder: (context, state) {
         return Form(
           key: cubit.formstate,
@@ -119,18 +128,23 @@ class AddTaskViewBody extends StatelessWidget {
                   const SizedBox(
                     height: 50,
                   ),
-                  MaterialButton(
-                      height: 50,
-                      color: kButtonColor,
-                      splashColor: Colors.deepPurpleAccent,
-                      onPressed: () {
-                        if (cubit.formstate.currentState!.validate()) {}
-                      },
-                      child: Text(
-                        'Create task',
-                        style: Styles().textstyle22.copyWith(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      )),
+                  state is AddDateLoading
+                      ? const Center(child: CircularProgressIndicator())
+                      : MaterialButton(
+                          height: 50,
+                          color: kButtonColor,
+                          splashColor: Colors.deepPurpleAccent,
+                          onPressed: () {
+                            if (cubit.formstate.currentState!.validate()) {
+                              cubit.insertDate();
+                            }
+                          },
+                          child: Text(
+                            'Create task',
+                            style: Styles().textstyle22.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          )),
                   const SizedBox(
                     height: 50,
                   ),
