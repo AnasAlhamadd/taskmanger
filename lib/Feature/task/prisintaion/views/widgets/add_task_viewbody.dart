@@ -7,6 +7,7 @@ import 'package:untitledtaskmanger/Feature/task/prisintaion/views/widgets/custom
 import 'package:untitledtaskmanger/Feature/task/cubit/task_cubit.dart';
 import 'package:untitledtaskmanger/core/helper/constant.dart';
 import 'package:untitledtaskmanger/core/helper/styles.dart';
+import 'package:untitledtaskmanger/core/widgets/show_fluttertoast.dart';
 import 'package:untitledtaskmanger/core/widgets/show_snak_bar.dart';
 
 class AddTaskViewBody extends StatelessWidget {
@@ -18,7 +19,11 @@ class AddTaskViewBody extends StatelessWidget {
     return BlocConsumer<TaskviewCubit, TaskviewState>(
       listener: (context, state) {
         // TODO: implement listener
+
         if (state is AddDateSuccess) {
+          showToast(
+              msg: 'The Task has been added successfully',
+              toastState: ToastState.success);
           Navigator.pop(context);
         } else if (state is AddDateFaliure) {
           showsnackbar(context: context, title: state.errMesage);
