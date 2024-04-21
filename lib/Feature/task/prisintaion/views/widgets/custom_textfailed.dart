@@ -6,7 +6,6 @@ class CustomTextFormInAddTask extends StatelessWidget {
   const CustomTextFormInAddTask({
     super.key,
     required this.title,
-    this.onChanged,
     this.readOnly = false,
     this.hintText,
     this.suffixIco,
@@ -18,7 +17,6 @@ class CustomTextFormInAddTask extends StatelessWidget {
   final String? hintText;
   final TextEditingController? controller;
   final Widget? suffixIco;
-  final void Function(String)? onChanged;
   final void Function()? onTap;
   final bool readOnly;
   final String? Function(String?)? validator;
@@ -42,7 +40,6 @@ class CustomTextFormInAddTask extends StatelessWidget {
                   readOnly: readOnly,
                   controller: controller,
                   onTap: onTap,
-                  onChanged: onChanged,
                   validator: validator,
                   decoration: InputDecoration(
                       suffixIcon: suffixIco,

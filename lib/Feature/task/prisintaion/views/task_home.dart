@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:untitledtaskmanger/Feature/task_screen/perisintaion/views/widgets/task_app_viewbody.dart';
+import 'package:untitledtaskmanger/Feature/task/prisintaion/views/widgets/task_app_viewbody.dart';
 import 'package:untitledtaskmanger/core/helper/constant.dart';
 
 class TaskAppView extends StatelessWidget {

@@ -1,9 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:untitledtaskmanger/Feature/add_task_screen/cubit/addtask_cubit.dart';
 import 'package:untitledtaskmanger/Feature/auth/cubit/auth_cubit.dart';
-import 'package:untitledtaskmanger/Feature/task_screen/cubit/taskview_cubit.dart';
+import 'package:untitledtaskmanger/Feature/task/cubit/task_cubit.dart';
 import 'package:untitledtaskmanger/core/database/cache.dart';
 import 'package:untitledtaskmanger/core/helper/constant.dart';
 import 'package:untitledtaskmanger/core/services/services_layer.dart';
@@ -36,7 +35,6 @@ class TaskMangerApp extends StatelessWidget {
       builder: (context, child) => MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => AuthCubit()),
-          BlocProvider(create: (context) => AddtaskCubit()),
           BlocProvider(create: (context) => TaskviewCubit()),
         ],
         child: MaterialApp(

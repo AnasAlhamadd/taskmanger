@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:untitledtaskmanger/Feature/add_task_screen/cubit/addtask_cubit.dart';
-import 'package:untitledtaskmanger/Feature/add_task_screen/prisintaion/views/widgets/custom_appbar.dart';
-import 'package:untitledtaskmanger/Feature/add_task_screen/prisintaion/views/widgets/custom_textfailed.dart';
+import 'package:untitledtaskmanger/Feature/task/prisintaion/views/widgets/custom_appbar.dart';
+import 'package:untitledtaskmanger/Feature/task/prisintaion/views/widgets/custom_textfailed.dart';
+import 'package:untitledtaskmanger/Feature/task/cubit/task_cubit.dart';
 import 'package:untitledtaskmanger/core/helper/constant.dart';
 import 'package:untitledtaskmanger/core/helper/styles.dart';
 
@@ -13,13 +13,12 @@ class AddTaskViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = BlocProvider.of<AddtaskCubit>(context);
-    GlobalKey<FormState> formstate = GlobalKey<FormState>();
-    return Form(
-      key: formstate,
-      child: BlocBuilder<AddtaskCubit, AddTaskState>(
-        builder: (context, state) {
-          return Padding(
+    final cubit = BlocProvider.of<TaskviewCubit>(context);
+    return BlocBuilder<TaskviewCubit, TaskviewState>(
+      builder: (context, state) {
+        return Form(
+          key: cubit.formstate,
+          child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: ListView(
                 children: [
@@ -29,8 +28,7 @@ class AddTaskViewBody extends StatelessWidget {
                       validator: (input) {
                         if (input!.isEmpty) return 'The field is empty';
                       },
-                      controller: TextEditingController(),
-                      onChanged: (input) {},
+                      controller: cubit.title,
                       title: 'Title',
                       hintText: 'Enter title here'),
                   // !Note
@@ -39,14 +37,12 @@ class AddTaskViewBody extends StatelessWidget {
                       validator: (input) {
                         if (input!.isEmpty) return 'The field is empty';
                       },
-                      controller: TextEditingController(),
-                      onChanged: (input) {},
+                      controller: cubit.notes,
                       title: 'Note',
                       hintText: 'Enter note here'),
                   //!DATE
                   CustomTextFormInAddTask(
                     readOnly: true,
-                    controller: TextEditingController(),
                     title: 'Date',
                     hintText: DateFormat.yMEd().format(cubit.dateTime),
                     suffixIco: GestureDetector(
@@ -128,7 +124,7 @@ class AddTaskViewBody extends StatelessWidget {
                       color: kButtonColor,
                       splashColor: Colors.deepPurpleAccent,
                       onPressed: () {
-                        if (formstate.currentState!.validate()) {}
+                        if (cubit.formstate.currentState!.validate()) {}
                       },
                       child: Text(
                         'Create task',
@@ -139,9 +135,9 @@ class AddTaskViewBody extends StatelessWidget {
                     height: 50,
                   ),
                 ],
-              ));
-        },
-      ),
+              )),
+        );
+      },
     );
   }
 }

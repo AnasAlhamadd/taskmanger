@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:untitledtaskmanger/Feature/add_task_screen/prisintaion/views/widgets/add_task_viewbody.dart';
+import 'package:untitledtaskmanger/Feature/task/prisintaion/views/widgets/add_task_viewbody.dart';
 
 class AddTaskView extends StatelessWidget {
   const AddTaskView({super.key});

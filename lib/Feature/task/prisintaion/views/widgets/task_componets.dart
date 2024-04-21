@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:untitledtaskmanger/Feature/task_screen/data/model/task_model.dart';
+import 'package:untitledtaskmanger/Feature/task/data/models/task_model.dart';
 import 'package:untitledtaskmanger/core/helper/styles.dart';
 
 class TaskComponets extends StatelessWidget {

@@ -1,13 +1,13 @@
-import 'dart:math';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
+import 'package:untitledtaskmanger/Feature/task/data/models/task_model.dart';
 
-part 'addtask_state.dart';
+part 'task_state.dart';
 
-class AddtaskCubit extends Cubit<AddTaskState> {
-  AddtaskCubit() : super(GetDateInitial());
+class TaskviewCubit extends Cubit<TaskviewState> {
+  TaskviewCubit() : super(GetDateInitial());
 
   //varibale
   int curentIndex = 0;
@@ -17,6 +17,9 @@ class AddtaskCubit extends Cubit<AddTaskState> {
   String startTimeDate = DateFormat('hh:mm a').format(DateTime.now());
   String endTimeDate = DateFormat('hh:mm a')
       .format(DateTime.now().add(const Duration(minutes: 45)));
+  GlobalKey<FormState> formstate = GlobalKey<FormState>();
+  TextEditingController title = TextEditingController();
+  TextEditingController notes = TextEditingController();
 //
   //get Date
 
@@ -68,4 +71,5 @@ class AddtaskCubit extends Cubit<AddTaskState> {
     Color(0xffCC8441),
     Color(0xff9741CC),
   ];
+  List<TaskModel> listTasks = <TaskModel>[];
 }
