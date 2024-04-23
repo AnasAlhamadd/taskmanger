@@ -92,6 +92,7 @@ class TaskviewCubit extends Cubit<TaskviewState> {
     return null;
   }
 
+//!select Data
   dynamic selectData() async {
     emit(SelectDateLoading());
     try {
@@ -101,6 +102,17 @@ class TaskviewCubit extends Cubit<TaskviewState> {
       emit(SelectDateSuccess());
     } catch (e) {
       emit(SelectDateFaliure());
+    }
+  }
+
+  dynamic updateData(id) async {
+    try {
+      await getIt<SqlDb>().mysql(
+          table: 'update',
+          sql: 'UPDATE tasks SET isCompleted = 1 WHERE id = $id');
+      selectData();
+    } catch (e) {
+      print(e);
     }
   }
 }

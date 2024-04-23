@@ -16,6 +16,7 @@ class TaskAppBodyViewbody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = BlocProvider.of<TaskviewCubit>(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: CustomScrollView(slivers: [
@@ -102,7 +103,11 @@ class TaskAppBodyViewbody extends StatelessWidget {
                                         children: [
                                           CustomButton(
                                               textButton: 'Task Completed',
-                                              onPressed: () {}),
+                                              onPressed: () {
+                                                cubit.updateData(
+                                                    cubit.listTasks[index].id);
+                                                Navigator.pop(context);
+                                              }),
                                           CustomButton(
                                               color: kButtonColorSecound,
                                               textButton: 'Delete Task',
