@@ -35,7 +35,7 @@ class TaskMangerApp extends StatelessWidget {
       builder: (context, child) => MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => AuthCubit()),
-          BlocProvider(create: (context) => TaskviewCubit()),
+          BlocProvider(create: (context) => TaskviewCubit()..selectData()),
         ],
         child: MaterialApp(
           routes: routes,

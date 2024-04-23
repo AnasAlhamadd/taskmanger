@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:untitledtaskmanger/Feature/task/data/models/task_model.dart';
 import 'package:untitledtaskmanger/Feature/task/prisintaion/views/widgets/custom_appbar.dart';
 import 'package:untitledtaskmanger/Feature/task/prisintaion/views/widgets/custom_textfailed.dart';
 import 'package:untitledtaskmanger/Feature/task/cubit/task_cubit.dart';
@@ -19,7 +20,6 @@ class AddTaskViewBody extends StatelessWidget {
     return BlocConsumer<TaskviewCubit, TaskviewState>(
       listener: (context, state) {
         // TODO: implement listener
-
         if (state is AddDateSuccess) {
           showToast(
               msg: 'The Task has been added successfully',
@@ -133,15 +133,28 @@ class AddTaskViewBody extends StatelessWidget {
                   const SizedBox(
                     height: 50,
                   ),
-                  state is AddDateLoading
-                      ? const Center(child: CircularProgressIndicator())
-                      : MaterialButton(
+                  BlocBuilder<TaskviewCubit, TaskviewState>(
+                    builder: (context, state) {
+                      if (state is AddDateLoading) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                      return MaterialButton(
                           height: 50,
                           color: kButtonColor,
                           splashColor: Colors.deepPurpleAccent,
-                          onPressed: () {
+                          onPressed: () async {
                             if (cubit.formstate.currentState!.validate()) {
-                              cubit.insertDate();
+                              cubit.insertData(
+                                  model: TaskModel(
+                                      title: '${cubit.title.text}',
+                                      startTime: '${cubit.startTimeDate}',
+                                      endTime: '${cubit.endTimeDate}',
+                                      notes: '${cubit.notes.text}',
+                                      date: '${cubit.dateTime}',
+                                      color: cubit.curentIndex.toInt(),
+                                      isCompleted: 0));
                             }
                           },
                           child: Text(
@@ -149,7 +162,9 @@ class AddTaskViewBody extends StatelessWidget {
                             style: Styles().textstyle22.copyWith(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold),
-                          )),
+                          ));
+                    },
+                  ),
                   const SizedBox(
                     height: 50,
                   ),

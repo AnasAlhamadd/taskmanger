@@ -16,3 +16,9 @@ final class AddDateFaliure extends TaskviewState {
 
   AddDateFaliure({required this.errMesage});
 }
+
+final class SelectDateLoading extends TaskviewState {}
+
+final class SelectDateSuccess extends TaskviewState {}
+
+final class SelectDateFaliure extends TaskviewState {}

@@ -1,5 +1,5 @@
 class TaskModel {
-  final String id;
+  final int? id;
 
   final String title;
   final String startTime;
@@ -7,10 +7,10 @@ class TaskModel {
   final String notes;
   final String date;
   final int color;
-  final bool isCompleted;
+  final int isCompleted;
 
   TaskModel(
-      {required this.id,
+      {this.id,
       required this.title,
       required this.startTime,
       required this.endTime,
@@ -18,4 +18,16 @@ class TaskModel {
       required this.date,
       required this.color,
       required this.isCompleted});
+  factory TaskModel.fromJson(Map<String, dynamic> JsonData) {
+    return TaskModel(
+      id: JsonData['id'],
+      title: JsonData['title'],
+      startTime: JsonData['startTime'],
+      endTime: JsonData['endTime'],
+      notes: JsonData['notes'],
+      date: JsonData['date'],
+      color: JsonData['color'],
+      isCompleted: JsonData['isCompleted'],
+    );
+  }
 }

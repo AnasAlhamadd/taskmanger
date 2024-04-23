@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:untitledtaskmanger/Feature/task/cubit/task_cubit.dart';
 import 'package:untitledtaskmanger/Feature/task/data/models/task_model.dart';
 import 'package:untitledtaskmanger/core/helper/styles.dart';
 
@@ -8,25 +10,18 @@ class TaskComponets extends StatelessWidget {
   final TaskModel taskModel;
   @override
   Widget build(BuildContext context) {
-    List<Color> listColorsOfElipsic = const [
-      Color(0xffFF4666),
-      Color(0xff66CC41),
-      Color(0xffb41CCA7),
-      Color(0xff4181CC),
-      Color(0xffCC8441),
-      Color(0xff9741CC),
-    ];
     return Container(
       height: 130,
       decoration: BoxDecoration(
-        color: listColorsOfElipsic[taskModel.color],
+        color: BlocProvider.of<TaskviewCubit>(context)
+            .listColorsOfElipsic[taskModel.color],
         borderRadius: BorderRadius.circular(16),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Row(
           children: [
-            //Custom title and time and Icon
+            //! Custom title and time and Icon
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,7 +63,7 @@ class TaskComponets extends StatelessWidget {
             ),
             RotatedBox(
                 quarterTurns: 3,
-                child: taskModel.isCompleted
+                child: taskModel.isCompleted == 1
                     ? Text(
                         'Completed',
                         style:

@@ -19,11 +19,7 @@ Color getColor(ToastState toastState) {
     case ToastState.success:
       return const Color(0xff41B06E);
     case ToastState.error:
-<<<<<<< HEAD
       return Colors.red;
-=======
-      return const Color(0xff41B06E);
->>>>>>> 232d53587cde2b51779a7c158a2cc55f881fe7a1
     case ToastState.warning:
       return const Color(0xffC70039);
   }

@@ -16,65 +16,70 @@ class TaskAppBodyViewbody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = BlocProvider.of<TaskviewCubit>(context);
-    return BlocBuilder<TaskviewCubit, TaskviewState>(
-      builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: CustomScrollView(slivers: [
-            SliverToBoxAdapter(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  //date Time
-                  Text(
-                    DateFormat.yMMMd().format(DateTime.now()),
-                    style: Styles().textstyle28,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 12.0),
-                    child: Text(
-                      'Today',
-                      style: Styles().textstyle28,
-                    ),
-                  )
-                ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: CustomScrollView(slivers: [
+        SliverToBoxAdapter(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 40,
               ),
-            ),
-            SliverFillRemaining(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.only(top: 6.0),
-                    height: 120,
-                    child: DatePicker(
-                      DateTime.now(),
-                      initialSelectedDate: DateTime.now(),
-                      dayTextStyle: Styles().textStyle18,
-                      dateTextStyle: Styles().textStyle18,
-                      monthTextStyle: Styles().textStyle18,
-                      selectionColor: kButtonColor,
-                      selectedTextColor: Colors.white,
-                      onDateChange: (date) {
-                        // New date selected
-                        // setState(() {
-                        //   _selectedValue = date;
-                        // });
-                      },
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  cubit.listTasks.isEmpty
-                      ? SvgPicture.asset('assets/images/homescreen.svg')
-                      : Expanded(
-                          child: ListView.separated(
+              //date Time
+              Text(
+                DateFormat.yMMMd().format(DateTime.now()),
+                style: Styles().textstyle28,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 12.0),
+                child: Text(
+                  'Today',
+                  style: Styles().textstyle28,
+                ),
+              )
+            ],
+          ),
+        ),
+        SliverFillRemaining(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20.h,
+              ),
+              Container(
+                padding: const EdgeInsets.only(top: 6.0),
+                height: 120,
+                child: DatePicker(
+                  DateTime.now(),
+                  initialSelectedDate: DateTime.now(),
+                  dayTextStyle: Styles().textStyle18,
+                  dateTextStyle: Styles().textStyle18,
+                  monthTextStyle: Styles().textStyle18,
+                  selectionColor: kButtonColor,
+                  selectedTextColor: Colors.white,
+                  onDateChange: (date) {
+                    // New date selected
+                    // setState(() {
+                    //   _selectedValue = date;
+                    // });
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              BlocBuilder<TaskviewCubit, TaskviewState>(
+                builder: (context, state) {
+                  if (state is SelectDateLoading) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  return Expanded(
+                    child: cubit.listTasks.isEmpty
+                        ? SvgPicture.asset('assets/images/homescreen.svg')
+                        : ListView.separated(
                             padding: EdgeInsets.zero,
                             itemCount: cubit.listTasks.length,
                             itemBuilder: (context, index) => GestureDetector(
@@ -120,13 +125,13 @@ class TaskAppBodyViewbody extends StatelessWidget {
                               height: 10.h,
                             ),
                           ),
-                        )
-                ],
-              ),
-            ),
-          ]),
-        );
-      },
+                  );
+                },
+              )
+            ],
+          ),
+        ),
+      ]),
     );
   }
 }

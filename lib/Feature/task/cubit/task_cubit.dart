@@ -1,20 +1,19 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:meta/meta.dart';
 import 'package:untitledtaskmanger/Feature/task/data/models/task_model.dart';
+import 'package:untitledtaskmanger/Feature/task/data/sqflite_helper/sqflite_helper.dart';
+import 'package:untitledtaskmanger/core/services/services_layer.dart';
 
 part 'task_state.dart';
 
 class TaskviewCubit extends Cubit<TaskviewState> {
   TaskviewCubit() : super(GetDateInitial());
 
-  //varibale
+  //!varibale
   int curentIndex = 0;
   bool val = false;
-
   DateTime dateTime = DateTime.now();
   String startTimeDate = DateFormat('hh:mm a').format(DateTime.now());
   String endTimeDate = DateFormat('hh:mm a')
@@ -22,8 +21,9 @@ class TaskviewCubit extends Cubit<TaskviewState> {
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
   TextEditingController title = TextEditingController();
   TextEditingController notes = TextEditingController();
-//
-  //get Date
+  List<TaskModel> listTasks = [];
+
+  //!get Date
 
   void getDate(context) async {
     DateTime? pickedDate = await showDatePicker(
@@ -36,7 +36,7 @@ class TaskviewCubit extends Cubit<TaskviewState> {
       emit(GetDateSuccess());
     }
   }
-  //get Date StartDate and EndDate
+  //!get Date StartDate and EndDate
 
   void startDate(context) async {
     TimeOfDay? pickedstartTimeDate = await showTimePicker(
@@ -59,7 +59,7 @@ class TaskviewCubit extends Cubit<TaskviewState> {
     }
   }
 
-  //Check On Elipse
+  //!Check On Elipse
   setCheckOnElipse(int index) {
     curentIndex = index;
     emit(GetDateSuccess());
@@ -73,37 +73,34 @@ class TaskviewCubit extends Cubit<TaskviewState> {
     Color(0xffCC8441),
     Color(0xff9741CC),
   ];
-  List<TaskModel> listTasks = <TaskModel>[];
 
-  void insertDate() async {
+  Future<int?> insertData({required TaskModel model}) async {
     emit(AddDateLoading());
+    Future.delayed(const Duration(seconds: 2));
     try {
-      //to make scren wait 2 secounds
-      await Future.delayed(Duration(seconds: 2));
-      listTasks.add(
-        TaskModel(
-          id: '1',
-          title: title.text,
-          startTime: startTimeDate,
-          endTime: endTimeDate,
-          notes: notes.text,
-          date: DateFormat.yMEd().format(dateTime),
-          color: curentIndex,
-          isCompleted: false,
-        ),
-      );
-
+      await getIt<SqlDb>().mysql(
+          table: 'insert',
+          sql:
+              'INSERT INTO tasks (title , date , notes , startTime ,endTime , color , isCompleted) VALUES ("${model.title}" ,"${model.date}" , "${model.notes}"  ,"${model.startTime}" , "${model.endTime}" , ${model.color.toInt()} , ${model.isCompleted.toInt()})');
       emit(AddDateSuccess());
+      selectData();
       title.clear();
       notes.clear();
-      dateTime = DateTime.now();
-      startTimeDate = DateFormat('hh:mm a').format(DateTime.now());
-      endTimeDate = DateFormat('hh:mm a')
-          .format(DateTime.now().add(const Duration(minutes: 45)));
-      curentIndex = 0;
     } catch (e) {
-      emit(AddDateFaliure(
-          errMesage: 'There is A Problem with the ${e.toString()}'));
+      emit(AddDateFaliure(errMesage: 'There is A problem with Add Task'));
+    }
+    return null;
+  }
+
+  dynamic selectData() async {
+    emit(SelectDateLoading());
+    try {
+      List<Map<String, dynamic>> responce = await getIt<SqlDb>()
+          .mysql(table: 'select', sql: 'SELECT * FROM tasks');
+      listTasks = responce.map((e) => TaskModel.fromJson(e)).toList();
+      emit(SelectDateSuccess());
+    } catch (e) {
+      emit(SelectDateFaliure());
     }
   }
 }
