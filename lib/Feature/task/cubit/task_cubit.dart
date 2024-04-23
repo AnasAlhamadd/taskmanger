@@ -15,6 +15,7 @@ class TaskviewCubit extends Cubit<TaskviewState> {
   int curentIndex = 0;
   bool val = false;
   DateTime dateTime = DateTime.now();
+  DateTime selectedDate = DateTime.now();
   String startTimeDate = DateFormat('hh:mm a').format(DateTime.now());
   String endTimeDate = DateFormat('hh:mm a')
       .format(DateTime.now().add(const Duration(minutes: 45)));
@@ -60,11 +61,20 @@ class TaskviewCubit extends Cubit<TaskviewState> {
   }
 
   //!Check On Elipse
-  setCheckOnElipse(int index) {
+  void setCheckOnElipse(int index) {
     curentIndex = index;
     emit(GetDateSuccess());
   }
 
+//!selectedDate
+  void selectedDateTask(date) {
+    emit(SelectedDateTaskLoading());
+    selectedDate = date;
+    selectData();
+    emit(SelectedDateTaskSuccess());
+  }
+
+//! listColors
   List<Color> listColorsOfElipsic = const [
     Color(0xffFF4666),
     Color(0xff66CC41),
@@ -74,6 +84,7 @@ class TaskviewCubit extends Cubit<TaskviewState> {
     Color(0xff9741CC),
   ];
 
+//!insert Data
   Future<int?> insertData({required TaskModel model}) async {
     emit(AddDateLoading());
     Future.delayed(const Duration(seconds: 2));
@@ -93,36 +104,35 @@ class TaskviewCubit extends Cubit<TaskviewState> {
   }
 
 //!select Data
-  dynamic selectData() async {
+  void selectData() async {
     emit(SelectDateLoading());
     try {
       List<Map<String, dynamic>> responce = await getIt<SqlDb>()
           .mysql(table: 'select', sql: 'SELECT * FROM tasks');
-      listTasks = responce.map((e) => TaskModel.fromJson(e)).toList();
+      listTasks = responce
+          .map((e) => TaskModel.fromJson(e))
+          .toList()
+          .where((element) =>
+              element.date == DateFormat.yMd().format(selectedDate))
+          .toList();
       emit(SelectDateSuccess());
     } catch (e) {
       emit(SelectDateFaliure());
     }
   }
 
-  dynamic updateData(id) async {
-    try {
-      await getIt<SqlDb>().mysql(
-          table: 'update',
-          sql: 'UPDATE tasks SET isCompleted = 1 WHERE id = $id');
-      selectData();
-    } catch (e) {
-      print(e);
-    }
+//!updated Data
+  void updateData(id) async {
+    await getIt<SqlDb>().mysql(
+        table: 'update',
+        sql: 'UPDATE tasks SET isCompleted = 1 WHERE id = $id');
+    selectData();
   }
 
-  dynamic deleteData(id) {
-    try {
-      getIt<SqlDb>()
-          .mysql(table: 'delete', sql: 'DELETE FROM tasks WHERE id = $id');
-      selectData();
-    } catch (e) {
-      print(e);
-    }
+//!delete Data
+  void deleteData(id) {
+    getIt<SqlDb>()
+        .mysql(table: 'delete', sql: 'DELETE FROM tasks WHERE id = $id');
+    selectData();
   }
 }

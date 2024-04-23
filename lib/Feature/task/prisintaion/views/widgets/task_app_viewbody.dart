@@ -60,10 +60,7 @@ class TaskAppBodyViewbody extends StatelessWidget {
                   selectionColor: kButtonColor,
                   selectedTextColor: Colors.white,
                   onDateChange: (date) {
-                    // New date selected
-                    // setState(() {
-                    //   _selectedValue = date;
-                    // });
+                    cubit.selectedDateTask(date);
                   },
                 ),
               ),

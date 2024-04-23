@@ -152,7 +152,8 @@ class AddTaskViewBody extends StatelessWidget {
                                       startTime: '${cubit.startTimeDate}',
                                       endTime: '${cubit.endTimeDate}',
                                       notes: '${cubit.notes.text}',
-                                      date: '${cubit.dateTime}',
+                                      date:
+                                          '${DateFormat.yMd().format(cubit.dateTime)}',
                                       color: cubit.curentIndex.toInt(),
                                       isCompleted: 0));
                             }

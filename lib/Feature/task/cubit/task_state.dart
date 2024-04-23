@@ -22,3 +22,9 @@ final class SelectDateLoading extends TaskviewState {}
 final class SelectDateSuccess extends TaskviewState {}
 
 final class SelectDateFaliure extends TaskviewState {}
+
+final class SelectedDateTaskLoading extends TaskviewState {}
+
+final class SelectedDateTaskSuccess extends TaskviewState {}
+
+final class SelectedDateTaskFaliure extends TaskviewState {}
