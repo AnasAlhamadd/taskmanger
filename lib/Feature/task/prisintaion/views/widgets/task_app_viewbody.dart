@@ -111,10 +111,16 @@ class TaskAppBodyViewbody extends StatelessWidget {
                                           CustomButton(
                                               color: kButtonColorSecound,
                                               textButton: 'Delete Task',
-                                              onPressed: () {}),
+                                              onPressed: () {
+                                                cubit.deleteData(
+                                                    cubit.listTasks[index].id);
+                                                Navigator.pop(context);
+                                              }),
                                           CustomButton(
                                             textButton: 'Cancel',
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
                                           )
                                         ],
                                       ),

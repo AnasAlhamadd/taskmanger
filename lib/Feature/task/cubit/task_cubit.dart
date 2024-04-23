@@ -115,4 +115,14 @@ class TaskviewCubit extends Cubit<TaskviewState> {
       print(e);
     }
   }
+
+  dynamic deleteData(id) {
+    try {
+      getIt<SqlDb>()
+          .mysql(table: 'delete', sql: 'DELETE FROM tasks WHERE id = $id');
+      selectData();
+    } catch (e) {
+      print(e);
+    }
+  }
 }
